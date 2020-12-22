@@ -1,0 +1,38 @@
+<script>
+
+fetch('/graphql', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer {{settings.storefront_api.token}}'
+    },
+    body: JSON.stringify({ query: `
+        query SingleProduct {
+            site {
+                products (entityIds: [6293]) {
+                    edges {
+                        node {
+                            id 
+                            entityId
+                            name
+                            prices {
+                                price {
+                                    value
+                                    currencyCode
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }`
+    }),
+})
+.then(res => res.json())
+.then(res => console.log(res.data));
+
+console.log("{{settings.storefront_api.token}}");
+console.log("hello");
+
+</script>
