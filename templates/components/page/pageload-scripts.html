@@ -32,7 +32,14 @@ fetch('/graphql', {
 .then(res => res.json())
 .then(res => console.log(res.data));
 
-console.log("{{settings.storefront_api.token}}");
-console.log("hello");
+{{inject "product" "my cool product"}}
+{{inject "categoryProductsPerPage" 24}}
+
+
+{{!--console.log("{{settings.storefront_api.token}}");--}}
+
+const jsContext = {{jsContext}};
+
+{{!--console.log("page context: ", pageContext);--}}
 
 </script>
