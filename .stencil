@@ -1,0 +1,13 @@
+{
+  "customLayouts": {
+    "brand": {},
+    "category": {
+        "facet-links-test.html": "/blanks"
+    },
+    "page": {},
+    "product": {}
+  },
+  "normalStoreUrl": "https://getbitoutdoors.com",
+  "accessToken": "1bsk2k2ldnjg4ms76vpdzgjfppmza5j",
+  "port": 3000
+}
