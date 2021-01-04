@@ -7,7 +7,6 @@ category:
 {{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
 {{inject "categoryId" category.id}}
 {{#partial "head"}}
-    <h1 class="center text-red-500">Custom Page</h1>
     {{#if pagination.category.previous}}
         <link rel="prev" href="{{pagination.category.previous}}">
     {{/if}}
@@ -17,6 +16,8 @@ category:
 {{/partial}}
 
 {{#partial "page"}}
+    <h1 class="text-4xl text-red-500">Custom Category Template</h1>
+
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 {{#if category.image}}
@@ -50,7 +51,7 @@ category:
     {{/if}}
 
     <main class="page-content" id="product-listing-container">
-        {{> components/category/product-listing}}
+        {{> components/category/product-listing-test}}
         {{{region name="category_below_content"}}}
     </main>
 </div>
