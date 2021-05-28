@@ -1,12 +1,20 @@
+{{!--{{inject 'showAdminBar' false}}--}}
+
+{{!--<script>--}}
+{{!--    console.log('hello ' + {{myKey}});--}}
+{{!--    var jsContext = JSON.parse({{jsContext}});--}}
+{{!--    console.log(jsContext)--}}
+{{!--</script>--}}
+
 <div class="productView" {{#if settings.data_tag_enabled}} data-event-type="product" data-entity-id="{{product.id}}" data-name="{{product.title}}" data-product-category="{{#each product.category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{product.brand.name}}" data-product-price="{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}" data-product-variant="single-product-option"{{/if}}>
 {{#each product.reviews.messages}}
-        {{#if error}}
-            {{> components/common/alert/alert-error error}}
-        {{/if}}
-        {{#if success}}
-            {{> components/common/alert/alert-success success}}
-        {{/if}}
-    {{/each}}
+    {{#if error}}
+        {{> components/common/alert/alert-error error}}
+    {{/if}}
+    {{#if success}}
+        {{> components/common/alert/alert-success success}}
+    {{/if}}
+{{/each}}
 
     <section class="productView-images" data-image-gallery>
         {{!--
@@ -229,6 +237,7 @@
                         {{{dynamicComponent 'components/products/options'}}}
                     {{/each}}
                 </div>
+{{!--                <h1>Stock: {{product.stock_level}}</h1>--}}
                 <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
                     <label class="form-label form-label--alternate">
                         {{lang 'products.current_stock'}}

@@ -1,45 +1,244 @@
 <script>
 
-fetch('/graphql', {
-    method: 'POST',
-    credentials: 'same-origin',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer {{settings.storefront_api.token}}'
-    },
-    body: JSON.stringify({ query: `
-        query SingleProduct {
-            site {
-                products (entityIds: [6293]) {
-                    edges {
-                        node {
-                            id 
-                            entityId
-                            name
-                            prices {
-                                price {
-                                    value
-                                    currencyCode
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }`
-    }),
-})
-.then(res => res.json())
-.then(res => console.log(res.data));
+// fetch('/graphql', {
+//     method: 'POST',
+//     credentials: 'same-origin',
+//     headers: {
+//         'Content-Type': 'application/json',
+//         'Authorization': 'Bearer {{settings.storefront_api.token}}'
+//     },
+//     body: JSON.stringify({ query: `
+//         query SingleProduct {
+//             site {
+//                 products (entityIds: [6293]) {
+//                     edges {
+//                         node {
+//                             id
+//                             inventory {
+//                                 isInStock
+//                                 hasVariantInventory
+//                                 aggregated {
+//                                     availableToSell
+//                                     warningLevel
+//                                 }
+//                             }
+//                             variants {
+//                                 id
+//                                 entityId
+//                                 sku
+//                             }
+//                             entityId
+//                             name
+//                             prices {
+//                                 price {
+//                                     value
+//                                     currencyCode
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }`
+//     }),
+// })
+// .then(res => res.json())
+// .then(res => console.log(res.data));
 
-{{inject "product" "my cool product"}}
-{{inject "categoryProductsPerPage" 24}}
+// inventory {
+//                                     isInStock
+//                                     aggregated {
+//                                         availableToSell
+//                                         warningLevel
+//                                     }
+                                    
+//                                 }
 
 
-{{!--console.log("{{settings.storefront_api.token}}");--}}
 
-const jsContext = {{jsContext}};
 
-{{!--console.log("page context: ", pageContext);--}}
+
+// ------------------------------------------
+
+
+console.log("fns ran");
+console.log("--------------------------------------------");
+
+
+// function inventorySuccess(data) {
+//     console.log("inventorysuccess");
+//   // do something with data, which is an object
+// }
+
+
+// $.getJSON("", function (data) {
+//     console.log(data);
+//   });
+
+// $.getJSON("", function (data) {
+//     console.log(data);
+//   });
+
+// $.getJSON("https://jsonplaceholder.typicode.com/todos/1"
+// , function (data) {
+// console.log(data);
+// });
+
+
+
+// setTimeout(function(){
+//     $.getJSON(""
+// , function (data) {
+// console.log(data);
+// });
+// console.log("timed call");
+// }, 1000);
+
+// let promise = fetch("https://4plx.com/ssl/yahoo-inv-product_x.php", [options])
+
+// resolves with response headers
+// let myresponse = await fetch("https://4plx.com/ssl/yahoo-inv-product_x.php?_catalog=getbitoutdoors1&_code=Batson_XBPPLT08R07.0&_f=2&_id=ALPS_XBPPLT-", {
+//     method: 'GET'
+//     }); 
+
+
+// fetch('https://4plx.com/ssl/yahoo-inv-product_x.php?_catalog=getbitoutdoors1&_code=Batson_XBPPLT08R07.0&_f=2&_id=ALPS_XBPPLT-'
+// ,
+//     {
+//         method: 'GET', //, // *GET, POST, PUT, DELETE, etc.
+//         mode: 'no-cors', // no-cors, *cors, same-origin
+//         headers: {'Content-Type': 'text/plain'  }
+//     }
+// )
+    // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    // credentials: 'same-origin', // include, *same-origin, omit
+    // headers: {'Content-Type': 'application/json'  }
+      // 'text/plain' 'text/html' 'application/json' 'application/x-www-form-urlencoded'
+    
+    
+    // redirect: 'follow', // manual, *follow, error
+    // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    // body: JSON.stringify(data) // body data type must match "Content-Type" header
+  
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     return response;
+//   });
+//   .then(data => { console.log(data.json); })
+//   .then(response => response.json())
+//   .catch(function(x) {console.log(x);});
+//   .catch(error => {
+//     console.error('There has been a problem with your fetch operation:', error);
+// });
+//     // .then(response => response.json())
+//     .then(data => console.log(data))
+    
+
+// // read body as json
+// let result = await response.json(); 
+
+// setTimeout(function(){
+//     console.log(result);
+// }, 1000);
+//     $.ajax({
+//     url: "https://4plx.com/ssl/yahoo-inv-product_x.php",
+//       data: { _catalog: "getbitoutdoors1", _code: "Batson_XBPPLT08R07.0", _f: 2, _id: "ALPS_XBPPLT-"},
+//       success: function () {console.log("successful ajax");},
+//       dataType: "json"
+//     });
+// console.log("timed call");
+
+setTimeout(function (){
+    idCatalog = "ALPS_XBPPLT-";
+    sku = "Batson_XBPPLT08R07.0";
+    $.ajax({
+        type: 'GET',
+        url: 'https://4plx.com/ssl/yahoo-inv-product_x.php',
+        data: { _catalog: "getbitoutdoors1", 
+                _f: 3, 
+                _type: 1, 
+                _exp: 1,
+                _id: idCatalog, 
+                _code: sku
+        },
+        async: true,
+        crossDomain: true, 
+        success: function (data) { 
+            itemsData = data;
+            // console.log(JSON.stringify(itemsData));
+            console.log(itemsData[0]);
+
+            // firstItem = itemsData[0];
+            // qtyAv = firstItem.total;
+            // itemStatus = firstItem._4pl_sku_status[childSku];
+            // if (itemStatus === 2) {
+            //     itemStatusStr = "Discontinued";
+            //     } else {
+            //     itemStatusStr = "Active";
+            // }; 
+            // console.log("Parent Sku: " + parentSku);
+            // console.log("Child Sku: " + childSku);
+            // console.log("Qty Available: " + qtyAv);
+            // console.log("Status: " + itemStatusStr);
+        },
+        dataType: 'jsonp'
+    });
+    // console.log("Timed Fn");
+});
+
+
+// {{inject "product" "my cool product"}}
+// {{inject 'showAdminBar' false}}
+
+
+// console.log("{{settings.storefront_api.token}}");
+
+// const jsContext = {{jsContext}};
+
+// console.log("page context: ", pageContext);
+
+// .done(function(msg) {
+//   console.log( "Request done: " + msg );
+// })
+ 
+// .fail(function(jqXHR, textStatus) {
+//     console.log( "Request failed: " + textStatus );
+// });
+
 
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+
+<!-- https://4plx.com/ssl/yahoo-inv-product_x.php?_catalog=getbitoutdoors1&_code=Batson_XBPPLT08R07.0&_f=2&_id=ALPS_XBPPLT- -->
+
+<!-- // data: { _catalog: "getbitoutdoors1", _code: "Batson_XBPPLT08R07.0", _f: 2, _id: "ALPS_XBPPLT-"}, -->
+
+<!-- fetch("https://4plx.com/ssl/yahoo-inv-product_x.php?_catalog=getbitoutdoors1&_code=Batson_XBPPLT08R07.0&_f=2&_id=ALPS_XBPPLT-", {
+    "headers": {
+      "accept": "application/json, text/javascript, */*; q=0.01",
+      "accept-language": "en-US,en;q=0.9",
+      "cache-control": "no-cache",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Google Chrome\";v=\"90\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "cross-site"
+    },
+    "referrer": "http://localhost:4000/",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": null,
+    "method": "GET",
+    "mode": "cors",
+    "credentials": "omit"
+  }); -->
+
+
+ <!-- https://4plx.com/ssl/yahoo-inv-product_x.php?_catalog=getbitoutdoors1&_code=Batson_XBPPLT08R07.0&_f=2&_id=ALPS_XBPPLT- -->
+
+ 
