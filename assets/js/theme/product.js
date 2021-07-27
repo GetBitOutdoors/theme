@@ -11,6 +11,8 @@ import modalFactory, { modalTypes } from './global/modal';
 
 const { WRITE_REVIEW } = modalTypes;
 
+require("shadow-cljs/gbo.mycljs")
+
 export default class Product extends PageManager {
     constructor(context) {
         super(context);
