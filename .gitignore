@@ -11,3 +11,5 @@ vendor/bundle
 *.js.map
 *.zip
 .idea/
+/.shadow-cljs/
+/target/

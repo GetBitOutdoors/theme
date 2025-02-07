@@ -9,7 +9,7 @@ import videoGallery from './product/video-gallery';
 import { classifyForm } from './common/utils/form-utils';
 import modalFactory from './global/modal';
 
-require("shadow-cljs/gbo.mycljs")
+//require("shadow-cljs/gbo.mycljs")
 
 export default class Product extends PageManager {
     constructor(context) {
