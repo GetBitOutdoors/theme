@@ -12,6 +12,9 @@ product:
 {{inject 'productId' product.id}}
 
 {{#partial "page"}}
+{{!--    why can't i print this?--}}
+{{!--    <script defer>console.log({{json breadcrumbs}})</script>--}}
+
 
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
