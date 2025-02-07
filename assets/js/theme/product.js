@@ -9,11 +9,13 @@ import videoGallery from './product/video-gallery';
 import { classifyForm } from './common/utils/form-utils';
 import modalFactory from './global/modal';
 
-//require("shadow-cljs/gbo.mycljs")
+var clj = require("./cljs/gbo.mycljs");
+
 
 export default class Product extends PageManager {
     constructor(context) {
         super(context);
+        window.productInstance = this;
         this.url = window.location.href;
         this.$reviewLink = $('[data-reveal-id="modal-review-form"]');
         this.$bulkPricingLink = $('[data-reveal-id="modal-bulk-pricing"]');
@@ -21,6 +23,9 @@ export default class Product extends PageManager {
     }
 
     onReady() {
+        clj.log("cljf  fn called  from js");
+
+        
         // Listen for foundation modal close events to sanitize URL after review.
         $(document).on('close.fndtn.reveal', () => {
             if (this.url.indexOf('#write_review') !== -1 && typeof window.history.replaceState === 'function') {

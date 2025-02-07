@@ -1,11 +1,12 @@
-(ns gbo.mycljs)
-  ;(:require))
-    ;[gql-format.core :as gf]
-    ;[lambdaisland.fetch :as fetch]))
-    ;["bigcommerce/stencil-utils" :as sten]))
-    ;[re-graph.core :as re-graph]))
+(ns gbo.mycljs
+  (:require [cljsjs.app]))
 
-(defn log [v]
+(defn init-product-handlers []
+  (when-let [product-instance (.-productInstance js/window)]
+    ;; Call review handler if URL contains hash
+    (.productReviewHandler product-instance)))
+
+(defn ^:export log [v]
   (js/console.log v))
 
 ;------------------------------
@@ -98,7 +99,7 @@
 ;         js/jsContext)
 ;       :keywordize-keys true)))
 
-(log "hello")
+(log "cljs fn called from cljs")
 
 ;
 ;(re-graph/query
@@ -114,6 +115,3 @@
 
 ;(let [div (.createElement js/document "DIV")]
 ;    (.appendChild div (create-button)))
-
-
-

@@ -10,5 +10,5 @@
  :builds
    {:code
     {:target :npm-module
-     :output-dir  "node_modules/shadow-cljs"
+     :output-dir  "assets/js/theme/cljs"
      :entries [gbo.mycljs]}}}
