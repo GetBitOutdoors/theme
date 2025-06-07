@@ -9,7 +9,7 @@ import videoGallery from './product/video-gallery';
 import { classifyForm } from './common/utils/form-utils';
 import modalFactory from './global/modal';
 
-var clj = require("./cljs/gbo.mycljs");
+// var clj = require("./cljs/gbo.mycljs");
 
 
 export default class Product extends PageManager {
@@ -23,7 +23,7 @@ export default class Product extends PageManager {
     }
 
     onReady() {
-        clj.log("cljf  fn called  from js");
+       // clj.log("cljf  fn called  from js");
 
         
         // Listen for foundation modal close events to sanitize URL after review.

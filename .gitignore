@@ -13,4 +13,4 @@ vendor/bundle
 .idea/
 /.shadow-cljs/
 /target/
-assets/js/theme/cljs/
+assets/js/cljs-output/cljs-runtime/

@@ -1,5 +1,8 @@
 var webpack = require('webpack');
 
+// Shadow CLJS dev server port
+const SHADOW_CLJS_PORT = 9630;
+
 /**
  * Watch options for the core watcher
  * @type {{files: string[], ignored: string[]}}
@@ -32,11 +35,11 @@ function development() {
             console.error(err.message, err.details);
         }
 
-        if (stats.hasErrors()) {
+        if (stats && stats.hasErrors()) {
             console.error(stats.toString({ all: false, errors: true, colors: true }));
         }
 
-        if (stats.hasWarnings()) {
+        if (stats && stats.hasWarnings()) {
             console.error(stats.toString({ all: false, warnings: true, colors: true }));
         }
 
@@ -86,4 +89,21 @@ if (process.send) {
     process.send('ready');
 }
 
-module.exports = { watchOptions };
+// Proxy configuration for shadow-cljs development server
+const devServerConfig = {
+    // Base configuration for the dev server
+    devServer: {
+        // Proxy configuration for ClojureScript development
+        proxy: {
+            // Proxy requests to the shadow-cljs dev server
+            '/assets/js/cljs-output': {
+                target: `http://localhost:${SHADOW_CLJS_PORT}`,
+                pathRewrite: { '^/assets/js/cljs-output': '' },
+                changeOrigin: true,
+                ws: true // Enable WebSockets for hot reloading
+            }
+        }
+    }
+};
+
+module.exports = { watchOptions, ...devServerConfig };

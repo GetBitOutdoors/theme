@@ -25,6 +25,13 @@ product:
     <div>
         {{> components/products/product-view}}
 
+        {{!-- ClojureScript Product Widget --}}
+        <div id="cljs-product-widget" 
+             class="cljs-product-widget"
+             data-cljs-module="gbo.product"
+             data-cljs-init-fn="mount_component"
+             data-cljs-props='{{json product}}'></div>
+
         {{{region name="product_below_content"}}}
 
         {{#if product.videos.list.length}}

@@ -2,14 +2,18 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
     { CleanWebpackPlugin } = require('clean-webpack-plugin'),
     LodashPlugin = require('lodash-webpack-plugin'),
     path = require('path'),
-    webpack = require('webpack');
+    webpack = require('webpack'),
+    { merge } = require('webpack-merge');
+
+// Import shadow-cljs webpack configuration
+const shadowConfig = require('./webpack.shadow.js');
 
 // Common configuration, with extensions in webpack.dev.js and webpack.prod.js.
-module.exports = {
+const commonConfig = {
     bail: true,
     context: __dirname,
     entry: {
-        main: './assets/js/app.js',
+        main: ['./assets/js/app.js', './assets/js/cljs-loader.js'],
         head_async: ['lazysizes'],
         font: './assets/js/theme/common/font.js',
         polyfills: './assets/js/polyfills.js',
@@ -20,6 +24,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 include: /(assets\/js|assets\\js|stencil-utils)/,
+                exclude: [/assets\/js\/cljs-output\//],
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -85,3 +90,6 @@ module.exports = {
         },
     },
 };
+
+// Merge common config with shadow-cljs config
+module.exports = merge(commonConfig, shadowConfig);
