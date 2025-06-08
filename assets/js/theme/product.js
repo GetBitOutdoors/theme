@@ -8,17 +8,18 @@ import ProductDetails from './common/product-details';
 import videoGallery from './product/video-gallery';
 import { classifyForm } from './common/utils/form-utils';
 import modalFactory from './global/modal';
+import { my_cljs_fn } from "/assets/js/cljs/main.js";
 
-import {my_cljs_fn} from "/assets/js/cljs-output/main.js";
 
-my_cljs_fn("cljs fn called explicitly from exports");
+export function my_js_top_level_fn() {
+    console.log("Project top level js function was called (from ClojureScript!)");
+}
 
-// module initialization should also run my_cljs_fn with default message
 
 export default class Product extends PageManager {
 
-    my_js_fn() {
-        console.log("Project js function was called from ClojureScript!");
+    my_js_product_method() {
+        console.log("Project method js function was called (from ClojureScript!)");
     }
 
     constructor(context) {
@@ -27,6 +28,7 @@ export default class Product extends PageManager {
         this.$reviewLink = $('[data-reveal-id="modal-review-form"]');
         this.$bulkPricingLink = $('[data-reveal-id="modal-bulk-pricing"]');
         this.reviewModal = modalFactory('#modal-review-form')[0];
+
     }
 
     onReady() {

@@ -89,21 +89,4 @@ if (process.send) {
     process.send('ready');
 }
 
-// Proxy configuration for shadow-cljs development server
-const devServerConfig = {
-    // Base configuration for the dev server
-    devServer: {
-        // Proxy configuration for ClojureScript development
-        proxy: {
-            // Proxy requests to the shadow-cljs dev server
-            '/assets/js/cljs-output': {
-                target: `http://localhost:${SHADOW_CLJS_PORT}`,
-                pathRewrite: { '^/assets/js/cljs-output': '' },
-                changeOrigin: true,
-                ws: true // Enable WebSockets for hot reloading
-            }
-        }
-    }
-};
-
-module.exports = { watchOptions, ...devServerConfig };
+module.exports = { watchOptions };
