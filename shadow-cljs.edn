@@ -1,11 +1,12 @@
-{:source-paths ["src/cljs"]
- :dependencies []
+{:source-paths ["src"]
+ ;; :dev-http {8000 "public"}
+;;  :dependencies []
  :builds
  {:theme {:target :esm
-          :output-dir "assets/js/cljs-output"
           :js-options {:js-provider :import}
+          :output-dir "assets/js/cljs-output"
           :modules {:main {:entries [gbo.core]
-                           :init-fn [gbo.core/init]
-                           :exports {exported_cljs_fn gbo.core/exported_cljs_fn}}}
+                           :init-fn [gbo.core/my_cljs_fn]
+                           :exports {my_cljs_fn gbo.core/my_cljs_fn}}}
           :dev {:compiler-options {:optimizations :simple}}
           :release {:compiler-options {:optimizations :advanced}}}}}

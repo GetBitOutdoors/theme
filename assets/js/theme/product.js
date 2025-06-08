@@ -9,15 +9,16 @@ import videoGallery from './product/video-gallery';
 import { classifyForm } from './common/utils/form-utils';
 import modalFactory from './global/modal';
 
-
 import cljs, { keyword } from "goog:cljs.core";
+import { my_cljs_fn } from "/assets/js/cljs-output/core.js";
+
+my_cljs_fn("cljs fn called explicitly from exports");
+
+// module initialization should also run my_cljs_fn with default message
 
 // call cljs fn explicitly from js
+cljs.my_cljs_fn("cljs fn called with cljs keyword");
 
-import { exported_cljs_fn } from "/assets/js/cljs-output/core.js";
-exported_cljs_fn();
-
-// init fn in cljs should also run
 export default class Product extends PageManager {
 
     my_js_fn() {
