@@ -45,13 +45,6 @@ category:
     {{/if}}
 
     <main class="page-content" id="product-listing-container">
-        {{!-- ClojureScript Category View Widget --}}
-        <div id="cljs-category-view" 
-             class="cljs-category-view"
-             data-cljs-module="gbo.category"
-             data-cljs-init-fn="mount_component"
-             data-cljs-props='{{json category}}'></div>
-
         {{> components/category/product-listing}}
     </main>
 

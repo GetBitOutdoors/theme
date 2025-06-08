@@ -4,31 +4,7 @@
  {:app {:target :esm
         :output-dir "assets/js/cljs-output"
         :js-options {:js-provider :import}
-        :module-loader false
         :modules {:main {:entries [gbo.core]
-                         :default true}
-                  :product {:entries [gbo.product]
-                            :init-fn gbo.product/init
-                            :depends-on #{:main}}
-                  :cart {:entries [gbo.cart]
-                         :init-fn gbo.cart/init
-                         :depends-on #{:main}}
-                  :category {:entries [gbo.category]
-                             :init-fn gbo.category/init
-                             :depends-on #{:main}}}
-        :compiler-options {:optimizations :simple
-                           :pretty-print false}
-        :dev {:compiler-options {:optimizations :none
-                                 :source-map true
-                                 :verbose true
-                                 :pretty-print true}
-              :devtools {:http-root "assets/js/cljs-output"
-                         :http-port 9630
-                         :watch-dir ".stencil/"}}
-        :release {:compiler-options {:optimizations :advanced
-                                     :infer-externs :auto
-                                     :closure-defines {"goog.DEBUG" false}}}
-                  :devtools {:http-root "assets/js/cljs-output"
-                            :http-port 9630
-                            :watch-dir "dist/"}
-        }}}
+                         :init-fn [gbo.core/init]}}
+        :dev {:compiler-options {:optimizations :simple}}
+        :release {:compiler-options {:optimizations :advanced}}}}}

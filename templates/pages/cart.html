@@ -26,13 +26,6 @@ cart: true
                 {{> components/cart/totals}}
             </div>
 
-            {{!-- ClojureScript Cart Summary Widget --}}
-            <div id="cljs-cart-summary" 
-                 class="cljs-cart-summary cart-content-padding-right"
-                 data-cljs-module="gbo.cart"
-                 data-cljs-init-fn="mount_component"
-                 data-cljs-props='{{json cart}}'></div>
-
             {{{region name="cart_below_totals"}}}
 
             {{#or customer (unless settings.hide_price_from_guests)}}
