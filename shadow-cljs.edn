@@ -5,6 +5,7 @@
         :output-dir "assets/js/cljs-output"
         :js-options {:js-provider :import}
         :modules {:main {:entries [gbo.core]
-                         :init-fn [gbo.core/init]}}
+                         :init-fn [gbo.core/init]
+                         :exports [gbo.core/exported_cljs_fn]}}
         :dev {:compiler-options {:optimizations :simple}}
         :release {:compiler-options {:optimizations :advanced}}}}}

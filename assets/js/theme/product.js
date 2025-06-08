@@ -9,7 +9,17 @@ import videoGallery from './product/video-gallery';
 import { classifyForm } from './common/utils/form-utils';
 import modalFactory from './global/modal';
 
+import cljs, { keyword } from "goog:cljs.core";
+
+// call cljs fn from js
+cljs.exported_cljs_fn();
+
 export default class Product extends PageManager {
+
+    myJsFn() {
+        console.log("Project js function was called from ClojureScript!");
+    }
+
     constructor(context) {
         super(context);
         this.url = window.location.href;
@@ -83,3 +93,5 @@ export default class Product extends PageManager {
         }
     }
 }
+
+
