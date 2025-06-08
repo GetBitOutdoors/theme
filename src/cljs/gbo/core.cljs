@@ -1,6 +1,7 @@
 (ns gbo.core
-  (:require ["jquery" :as $]
-            ["/assets/theme/product.js" :as product]))
+  (:require
+   ["jquery" :as $]
+   ["/assets/theme/product.js" :as product]))
 
 (defn test-jquery-from-cljs []
   (let [jquery-loaded? (boolean $)
@@ -16,9 +17,10 @@
 
 (defn run-all-print-tests []
   ;; calling project js fn from cljs
-  (product/myJsFn)
+  (product/my_js_fn)
 
-  (test-jquery-from-cljs))
+  (test-jquery-from-cljs)
+  (println "printed all integrations tests"))
 
 (defn exported_cljs_fn []
   (js/console.log "ClojureScript fn called from project js!")

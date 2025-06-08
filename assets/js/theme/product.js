@@ -9,14 +9,18 @@ import videoGallery from './product/video-gallery';
 import { classifyForm } from './common/utils/form-utils';
 import modalFactory from './global/modal';
 
+
 import cljs, { keyword } from "goog:cljs.core";
 
-// call cljs fn from js
-cljs.exported_cljs_fn();
+// call cljs fn explicitly from js
 
+import { exported_cljs_fn } from "/assets/js/cljs-output/core.js";
+exported_cljs_fn();
+
+// init fn in cljs should also run
 export default class Product extends PageManager {
 
-    myJsFn() {
+    my_js_fn() {
         console.log("Project js function was called from ClojureScript!");
     }
 
