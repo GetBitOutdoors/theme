@@ -5,8 +5,6 @@
  {:theme {:target :esm
           :js-options {:js-provider :import}
           :output-dir "assets/js/cljs-output"
-          :modules {:main {:entries [gbo.core]
-                           :init-fn [gbo.core/my_cljs_fn]
+          :modules {:main {:init-fn gbo.core/my_cljs_fn
                            :exports {my_cljs_fn gbo.core/my_cljs_fn}}}
-          :dev {:compiler-options {:optimizations :simple}}
           :release {:compiler-options {:optimizations :advanced}}}}}

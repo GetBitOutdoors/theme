@@ -10,7 +10,7 @@ import { classifyForm } from './common/utils/form-utils';
 import modalFactory from './global/modal';
 
 import cljs, { keyword } from "goog:cljs.core";
-import { my_cljs_fn } from "/assets/js/cljs-output/core.js";
+import { my_cljs_fn } from "/assets/js/cljs-output/main.js";
 
 my_cljs_fn("cljs fn called explicitly from exports");
 
